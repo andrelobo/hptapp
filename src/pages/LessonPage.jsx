@@ -3,18 +3,14 @@ import { Link, useParams } from 'react-router-dom'
 import { Download, Play, SkipBack, SkipForward } from 'lucide-react'
 import { assets, routes } from '../config/app'
 import { lessons } from '../data/mockData'
-
-function getCompletedLessons() {
-  const raw = window.localStorage.getItem('hp-completed-lessons')
-  return raw ? JSON.parse(raw) : []
-}
+import { useCompletedLessons, useDemoRole } from '../hooks/useDemoState'
 
 export function LessonPage() {
   const { id } = useParams()
   const lesson = lessons[id] ?? Object.values(lessons)[0]
-  const [completedLessons, setCompletedLessons] = useState(() =>
-    getCompletedLessons()
-  )
+  const { role } = useDemoRole()
+  const { completedLessons, toggleLesson } = useCompletedLessons()
+  const isCompany = role === 'empresa'
 
   const completed = useMemo(
     () => completedLessons.includes(lesson.id),
@@ -22,12 +18,7 @@ export function LessonPage() {
   )
 
   function handleComplete() {
-    const next = completed
-      ? completedLessons.filter((item) => item !== lesson.id)
-      : [...completedLessons, lesson.id]
-
-    window.localStorage.setItem('hp-completed-lessons', JSON.stringify(next))
-    setCompletedLessons(next)
+    toggleLesson(lesson.id)
   }
 
   return (
@@ -94,7 +85,9 @@ export function LessonPage() {
           <div className="space-y-3">
             <h2 className="text-lg font-bold text-ink">Sobre esta aula</h2>
             <p className="text-sm leading-7 text-slate-600">
-              {lesson.description}
+              {isCompany
+                ? 'Nesta demonstracao, a empresa visualiza como a trilha pode ser usada para capacitar a equipe com foco em atendimento mais inclusivo.'
+                : lesson.description}
             </p>
           </div>
 
@@ -129,7 +122,13 @@ export function LessonPage() {
                 : 'bg-brand-700 text-white'
             }`}
           >
-            {completed ? 'Aula concluida' : 'Concluir aula'}
+            {completed
+              ? isCompany
+                ? 'Trilha marcada como vista'
+                : 'Aula concluida'
+              : isCompany
+                ? 'Marcar demo como vista'
+                : 'Concluir aula'}
           </button>
         </div>
       </section>

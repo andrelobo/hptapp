@@ -1,13 +1,16 @@
 import { Link } from 'react-router-dom'
 import {
+  ArrowRight,
   Award,
   BookOpenCheck,
   BriefcaseBusiness,
   MessageSquareMore,
   Smartphone
 } from 'lucide-react'
+import { DemoProfileSwitch } from '../components/DemoProfileSwitch'
 import { assets, routes } from '../config/app'
 import { InstallPromptButton } from '../components/InstallPromptButton'
+import { useDemoRole } from '../hooks/useDemoState'
 
 const highlights = [
   {
@@ -33,6 +36,9 @@ const highlights = [
 ]
 
 export function HomePage() {
+  const { role, roleMeta } = useDemoRole()
+  const isCompany = role === 'empresa'
+
   return (
     <div className="min-h-screen bg-brand-mesh">
       <div className="mx-auto flex min-h-screen max-w-6xl flex-col px-5 pb-10 pt-8 sm:px-8 lg:px-10">
@@ -63,17 +69,23 @@ export function HomePage() {
             </div>
             <div className="space-y-4">
               <p className="text-sm font-semibold uppercase tracking-[0.35em] text-brand-500">
-                Comunicacao sem barreiras
+                {isCompany
+                  ? 'Capacitacao e conexao com talentos'
+                  : 'Comunicacao sem barreiras'}
               </p>
               <h1 className="max-w-xl text-4xl font-black leading-tight text-brand-900 sm:text-5xl">
-                Plataforma de capacitacao, certificacao e inclusao para
-                transformar pessoas e empresas.
+                {isCompany
+                  ? 'Um MVP pronto para apresentar trilhas, talentos e parcerias em inclusao.'
+                  : 'Plataforma de capacitacao, certificacao e inclusao para transformar pessoas e empresas.'}
               </h1>
               <p className="max-w-xl text-lg leading-8 text-slate-600">
-                Um MVP visual, claro e pronto para apresentar a instituicoes de
-                ensino e empresas parceiras, com jornada mobile-first focada no
-                aluno.
+                {isCompany
+                  ? 'Demonstre para empresas parceiras como o app pode apoiar treinamento interno, empregabilidade e relacionamento com a comunidade.'
+                  : 'Um MVP visual, claro e pronto para apresentar a instituicoes de ensino e empresas parceiras, com jornada mobile-first focada no aluno.'}
               </p>
+            </div>
+            <div className="max-w-md">
+              <DemoProfileSwitch />
             </div>
             <div className="flex flex-wrap gap-3">
               <Link
@@ -86,7 +98,13 @@ export function HomePage() {
                 to={routes.signup}
                 className="rounded-full border border-brand-200 bg-white px-6 py-3 text-sm font-semibold text-brand-700 shadow-soft transition hover:-translate-y-0.5"
               >
-                Criar conta
+                {isCompany ? 'Simular acesso empresa' : 'Criar conta'}
+              </Link>
+              <Link
+                to={routes.courses}
+                className="rounded-full border border-brand-100 bg-brand-50 px-6 py-3 text-sm font-semibold text-brand-700 transition hover:-translate-y-0.5"
+              >
+                Ver trilhas
               </Link>
             </div>
             <div className="grid gap-3 sm:grid-cols-2">
@@ -116,10 +134,10 @@ export function HomePage() {
               <div className="flex items-center justify-between">
                 <div>
                   <p className="text-sm uppercase tracking-[0.24em] text-white/70">
-                    Boas-vindas
+                    {roleMeta.shortLabel}
                   </p>
                   <h2 className="mt-1 text-3xl font-black">
-                    Ola, Andre! 👋
+                    {roleMeta.greeting}
                   </h2>
                 </div>
                 <img
@@ -130,45 +148,62 @@ export function HomePage() {
               </div>
 
               <div className="mt-6 rounded-[2rem] bg-white/12 p-4">
-                <p className="text-sm text-white/80">Curso em destaque</p>
+                <p className="text-sm text-white/80">
+                  {isCompany ? 'Trilha recomendada' : 'Curso em destaque'}
+                </p>
                 <h3 className="mt-2 text-xl font-bold">
-                  Libras para Atendimento
+                  {isCompany
+                    ? 'Libras para Atendimento'
+                    : 'Libras para Atendimento'}
                 </h3>
                 <div className="mt-4 h-2 overflow-hidden rounded-full bg-white/20">
-                  <div className="h-full w-3/4 rounded-full bg-gold" />
+                  <div
+                    className="h-full rounded-full bg-gold"
+                    style={{ width: isCompany ? '68%' : '75%' }}
+                  />
                 </div>
-                <p className="mt-2 text-sm text-white/80">75% concluido</p>
+                <p className="mt-2 text-sm text-white/80">
+                  {isCompany
+                    ? 'Indicada para recepcao, caixa e vendas.'
+                    : '75% concluido'}
+                </p>
               </div>
 
               <div className="mt-6 grid grid-cols-3 gap-3">
                 <div className="rounded-[1.6rem] bg-white p-4 text-center text-brand-700">
-                  <p className="text-2xl font-black">2</p>
+                  <p className="text-2xl font-black">{isCompany ? '4' : '2'}</p>
                   <p className="text-xs font-semibold uppercase tracking-[0.2em]">
-                    Cursos
+                    {isCompany ? 'Trilhas' : 'Cursos'}
                   </p>
                 </div>
                 <div className="rounded-[1.6rem] bg-white p-4 text-center text-brand-700">
-                  <p className="text-2xl font-black">1</p>
+                  <p className="text-2xl font-black">{isCompany ? '18' : '1'}</p>
                   <p className="text-xs font-semibold uppercase tracking-[0.2em]">
-                    Certificado
+                    {isCompany ? 'Talentos' : 'Certificado'}
                   </p>
                 </div>
                 <div className="rounded-[1.6rem] bg-white p-4 text-center text-brand-700">
-                  <p className="text-2xl font-black">08h</p>
+                  <p className="text-2xl font-black">{isCompany ? '3' : '08h'}</p>
                   <p className="text-xs font-semibold uppercase tracking-[0.2em]">
-                    Estudo
+                    {isCompany ? 'Parcerias' : 'Estudo'}
                   </p>
                 </div>
               </div>
 
               <div className="mt-6 rounded-[2rem] border border-white/15 bg-white/10 p-4">
-                <p className="text-sm font-semibold text-white/90">
-                  Funciona offline
-                </p>
-                <p className="mt-1 text-sm text-white/70">
-                  Instale no celular e mantenha a apresentacao pronta para
-                  demonstracoes.
-                </p>
+                <div className="flex items-start justify-between gap-4">
+                  <div>
+                    <p className="text-sm font-semibold text-white/90">
+                      {isCompany ? 'Pronto para apresentar' : 'Funciona offline'}
+                    </p>
+                    <p className="mt-1 text-sm text-white/70">
+                      {isCompany
+                        ? 'Mostre o potencial do app para instituicoes e empresas parceiras em poucos cliques.'
+                        : 'Instale no celular e mantenha a apresentacao pronta para demonstracoes.'}
+                    </p>
+                  </div>
+                  <ArrowRight className="mt-1 h-5 w-5 shrink-0 text-gold" />
+                </div>
               </div>
             </div>
           </div>

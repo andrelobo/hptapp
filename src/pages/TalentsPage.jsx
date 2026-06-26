@@ -1,24 +1,37 @@
 import { MapPin, Paperclip, SearchCheck } from 'lucide-react'
 import { assets } from '../config/app'
-import { partnerBrands, talentProfile } from '../data/mockData'
+import {
+  companyProfile,
+  companyTalentSpotlight,
+  partnerBrands,
+  talentProfile
+} from '../data/mockData'
+import { useDemoRole } from '../hooks/useDemoState'
 
 export function TalentsPage() {
+  const { role } = useDemoRole()
+  const isCompany = role === 'empresa'
+
   return (
     <div className="space-y-6">
       <section className="rounded-[2.2rem] border border-white/70 bg-white p-5 shadow-soft">
         <div className="flex items-start gap-4">
           <div className="flex h-16 w-16 items-center justify-center rounded-[1.4rem] bg-brand-700 text-lg font-black text-white">
-            AD
+            {isCompany ? 'HP' : 'AD'}
           </div>
           <div className="min-w-0 flex-1">
-            <h1 className="text-xl font-black text-ink">{talentProfile.name}</h1>
+            <h1 className="text-xl font-black text-ink">
+              {isCompany ? companyTalentSpotlight.name : talentProfile.name}
+            </h1>
             <div className="mt-2 flex flex-wrap items-center gap-2 text-sm text-slate-500">
               <span className="inline-flex items-center gap-1">
                 <MapPin className="h-4 w-4" />
-                {talentProfile.city}
+                {isCompany ? companyTalentSpotlight.city : talentProfile.city}
               </span>
               <span className="rounded-full bg-emerald-50 px-3 py-1 font-semibold text-emerald-700">
-                Disponivel para oportunidades
+                {isCompany
+                  ? companyTalentSpotlight.availability
+                  : 'Disponivel para oportunidades'}
               </span>
             </div>
           </div>
@@ -26,16 +39,23 @@ export function TalentsPage() {
 
         <div className="mt-5 space-y-4">
           <div>
-            <h2 className="text-sm font-semibold text-ink">Sobre mim</h2>
+            <h2 className="text-sm font-semibold text-ink">
+              {isCompany ? 'Resumo do talento' : 'Sobre mim'}
+            </h2>
             <p className="mt-2 text-sm leading-7 text-slate-600">
-              {talentProfile.bio}
+              {isCompany ? companyTalentSpotlight.summary : talentProfile.bio}
             </p>
           </div>
 
           <div>
-            <h2 className="text-sm font-semibold text-ink">Competencias</h2>
+            <h2 className="text-sm font-semibold text-ink">
+              {isCompany ? 'Destaques do perfil' : 'Competencias'}
+            </h2>
             <div className="mt-3 flex flex-wrap gap-2">
-              {talentProfile.skills.map((skill) => (
+              {(isCompany
+                ? companyTalentSpotlight.strengths
+                : talentProfile.skills
+              ).map((skill) => (
                 <span
                   key={skill}
                   className="rounded-full border border-brand-100 bg-brand-50 px-3 py-2 text-xs font-semibold text-brand-700"
@@ -54,10 +74,14 @@ export function TalentsPage() {
                 </div>
                 <div>
                   <p className="text-sm font-semibold text-ink">
-                    {talentProfile.resume}
+                    {isCompany
+                      ? 'Perfil_profissional.pdf'
+                      : talentProfile.resume}
                   </p>
                   <p className="text-xs text-slate-500">
-                    {talentProfile.updatedAt}
+                    {isCompany
+                      ? 'Atualizado e pronto para triagem'
+                      : talentProfile.updatedAt}
                   </p>
                 </div>
               </div>
@@ -78,11 +102,18 @@ export function TalentsPage() {
           <SearchCheck className="h-6 w-6 text-gold" />
           <div>
             <p className="text-sm uppercase tracking-[0.24em] text-white/70">
-              Empresas parceiras
+              {isCompany ? 'Parceria ativa' : 'Empresas parceiras'}
             </p>
-            <h2 className="text-xl font-bold">Banco de Talentos ativo</h2>
+            <h2 className="text-xl font-bold">
+              {isCompany
+                ? companyProfile.focus
+                : 'Banco de Talentos ativo'}
+            </h2>
           </div>
         </div>
+        <p className="mt-4 text-sm leading-7 text-white/80">
+          {isCompany ? companyProfile.bio : 'Conecte-se com empresas e oportunidades ligadas a inclusao e atendimento acessivel.'}
+        </p>
         <div className="mt-5 grid grid-cols-3 gap-3">
           {partnerBrands.map((brand) => (
             <div

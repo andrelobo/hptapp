@@ -1,5 +1,6 @@
 import { CalendarDays, Megaphone, Sparkles } from 'lucide-react'
 import { communityFeed } from '../data/mockData'
+import { useDemoRole } from '../hooks/useDemoState'
 
 const iconByType = {
   Aviso: Megaphone,
@@ -8,16 +9,22 @@ const iconByType = {
 }
 
 export function CommunityPage() {
+  const { role } = useDemoRole()
+  const isCompany = role === 'empresa'
+
   return (
     <div className="space-y-6">
       <section className="rounded-[2.2rem] bg-brand-700 p-5 text-white shadow-glow">
         <p className="text-sm uppercase tracking-[0.24em] text-white/70">
           Comunidade
         </p>
-        <h1 className="mt-2 text-3xl font-black">Conecte-se com a rede</h1>
+        <h1 className="mt-2 text-3xl font-black">
+          {isCompany ? 'Parcerias e oportunidades' : 'Conecte-se com a rede'}
+        </h1>
         <p className="mt-3 text-sm leading-7 text-white/80">
-          Compartilhe experiencias, acompanhe avisos e descubra oportunidades
-          ligadas a inclusao no comercio.
+          {isCompany
+            ? 'Acompanhe vagas, eventos e movimentacoes da comunidade para fortalecer a estrategia de inclusao da empresa.'
+            : 'Compartilhe experiencias, acompanhe avisos e descubra oportunidades ligadas a inclusao no comercio.'}
         </p>
       </section>
 

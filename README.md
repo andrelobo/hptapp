@@ -2,6 +2,13 @@
 
 Frontend PWA mobile-first do MVP da Heberton Pinheiro Treinamentos.
 
+O app agora suporta demonstracao rapida em dois perfis:
+
+- `aluno`
+- `empresa`
+
+As telas de entrada, trilhas e certificados tambem foram preparadas para apresentacao comercial do MVP.
+
 ## Stack
 
 - Vite
@@ -54,5 +61,6 @@ Se `hebertonpinheiro.com` já estiver em outro projeto da Vercel, o caminho `/ap
 - Este repo é somente frontend.
 - O build está configurado para deploy em subpath `/app`.
 - A configuração da Vercel também já está preparada para GitHub deploy em `/app`.
+- A troca de perfil demo fica disponível no shell do app para apresentações rápidas.
 - Integrações de backend serão adicionadas depois, em outro repositório.
 - Os assets de marca e material-base vêm do diretório local informado pelo usuário.

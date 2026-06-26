@@ -2,6 +2,7 @@ import { useMemo, useState } from 'react'
 import { Link, useLocation, useNavigate } from 'react-router-dom'
 import { routes } from '../config/app'
 import { authProfiles } from '../data/mockData'
+import { readRole, writeRole } from '../hooks/useDemoState'
 
 function useQueryMode() {
   const location = useLocation()
@@ -13,11 +14,11 @@ export function LoginPage() {
   const query = useQueryMode()
   const initialMode = query.get('mode') === 'signup' ? 'signup' : 'login'
   const [mode, setMode] = useState(initialMode)
-  const [profile, setProfile] = useState('aluno')
+  const [profile, setProfile] = useState(readRole)
 
   function handleSubmit(event) {
     event.preventDefault()
-    window.localStorage.setItem('hp-role', profile)
+    writeRole(profile)
     navigate(routes.dashboard)
   }
 
@@ -70,6 +71,10 @@ export function LoginPage() {
           onSubmit={handleSubmit}
           className="space-y-5 rounded-[2rem] border border-white/70 bg-white p-6 shadow-soft"
         >
+          <div className="rounded-[1.5rem] bg-brand-50 px-4 py-3 text-sm leading-6 text-brand-700">
+            Use este seletor para alternar rapidamente entre a visao de aluno e
+            empresa durante a apresentacao.
+          </div>
           <label className="block space-y-2">
             <span className="text-sm font-semibold text-ink">
               E-mail ou telefone

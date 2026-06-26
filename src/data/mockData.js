@@ -157,6 +157,30 @@ export const alerts = [
   }
 ]
 
+export const demoRoleMeta = {
+  aluno: {
+    shortLabel: 'Aluno',
+    greeting: 'Ola, Andre! 👋',
+    eyebrow: 'Continue sua jornada',
+    switchDescription: 'Cursos, progresso e certificados',
+    shellLabel: 'Jornada do aluno'
+  },
+  empresa: {
+    shortLabel: 'Empresa',
+    greeting: 'Ola, parceiro! 🤝',
+    eyebrow: 'Capacitacao e inclusao',
+    switchDescription: 'Talentos, trilhas e parcerias',
+    shellLabel: 'Visao da empresa'
+  },
+  admin: {
+    shortLabel: 'Admin',
+    greeting: 'Ola, time!',
+    eyebrow: 'Gestao futura',
+    switchDescription: 'Area reservada para operacao',
+    shellLabel: 'Gestao futura'
+  }
+}
+
 export const certificates = [
   {
     id: 'cert-atendimento',
@@ -217,7 +241,7 @@ export const communityFeed = [
   }
 ]
 
-export const dashboardStats = [
+export const dashboardStats = (completedLessons = 0) => [
   {
     id: 'courses',
     label: 'Cursos em andamento',
@@ -230,10 +254,63 @@ export const dashboardStats = [
   },
   {
     id: 'hours',
-    label: 'Horas estudadas',
-    value: '08h 30m'
+    label: 'Aulas concluidas',
+    value: `${completedLessons}`
   }
 ]
+
+export const companyDashboardStats = [
+  {
+    id: 'training',
+    label: 'Trilhas indicadas',
+    value: '4'
+  },
+  {
+    id: 'talents',
+    label: 'Talentos ativos',
+    value: '18'
+  },
+  {
+    id: 'partners',
+    label: 'Empresas parceiras',
+    value: '3'
+  }
+]
+
+export const companyCommunityHighlights = [
+  {
+    id: 'company-1',
+    title: 'Treinamento interno sugerido',
+    description: 'Libras para Atendimento com foco em recepcao e caixa.'
+  },
+  {
+    id: 'company-2',
+    title: 'Talento em destaque',
+    description: 'Profissional com disponibilidade imediata em Manaus.'
+  }
+]
+
+export const companyProfile = {
+  name: 'Equipe Comercial Parceira',
+  city: 'Manaus - AM',
+  focus: 'Atendimento acessivel no varejo',
+  bio: 'Organizacao em busca de capacitacao pratica, talentos inclusivos e fortalecimento da cultura de atendimento sem barreiras.',
+  needs: [
+    'Treinamento de equipe',
+    'Conexao com talentos',
+    'Eventos e workshops',
+    'Consultoria em inclusao'
+  ]
+}
+
+export const companyTalentSpotlight = {
+  name: 'Andre da Silva',
+  city: 'Manaus - AM',
+  availability: 'Disponivel para oportunidades',
+  summary:
+    'Perfil com foco em atendimento inclusivo, comunicacao e vivencia com Libras no ambiente comercial.',
+  strengths: ['Libras Basico', 'Atendimento', 'Comunicacao', 'Inclusao']
+}
 
 export const authProfiles = [
   {

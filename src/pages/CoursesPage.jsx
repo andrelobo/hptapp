@@ -3,13 +3,20 @@ import { CourseCard } from '../components/CourseCard'
 import { SectionTitle } from '../components/SectionTitle'
 import { routes } from '../config/app'
 import { courses } from '../data/mockData'
+import { useDemoRole } from '../hooks/useDemoState'
 
 const tabs = ['Todos', 'Em andamento', 'Concluidos']
 
 export function CoursesPage() {
+  const { role } = useDemoRole()
+  const isCompany = role === 'empresa'
+
   return (
     <div className="space-y-6">
-      <SectionTitle eyebrow="Trilhas" title="Meus Cursos" />
+      <SectionTitle
+        eyebrow="Trilhas"
+        title={isCompany ? 'Capacitacoes recomendadas' : 'Meus Cursos'}
+      />
 
       <div className="grid grid-cols-3 gap-2 rounded-[1.6rem] border border-white/70 bg-white p-2 shadow-soft">
         {tabs.map((tab, index) => (
@@ -32,13 +39,17 @@ export function CoursesPage() {
       </div>
 
       <Link
-        to={routes.certificates}
+        to={isCompany ? routes.talents : routes.certificates}
         className="block rounded-[1.8rem] bg-brand-900 px-5 py-5 text-white shadow-glow"
       >
         <p className="text-sm uppercase tracking-[0.24em] text-white/70">
           Proximo passo
         </p>
-        <h2 className="mt-2 text-xl font-bold">Acompanhe seus certificados</h2>
+        <h2 className="mt-2 text-xl font-bold">
+          {isCompany
+            ? 'Conheca talentos disponiveis'
+            : 'Acompanhe seus certificados'}
+        </h2>
       </Link>
     </div>
   )
