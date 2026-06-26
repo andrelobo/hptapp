@@ -41,3 +41,10 @@
 - Recursos dependentes do backend continuarão em modo mock até a separação entre os dois repositórios ser conectada.
 - As duas personas ainda compartilham a mesma base de rotas e dados mockados; a separação real dependerá do backend futuro.
 - A proteção atual é apenas de frontend/localStorage, suficiente para demo, mas não substitui autenticação real.
+
+## Proxima retomada sugerida
+
+- Continuar o polimento comercial do frontend antes de iniciar backend.
+- Revisar home, boas-vindas e dashboard com foco em impacto visual para investidores e parceiros.
+- Refinar contraste, hierarquia visual e CTAs mantendo o fundo azul como identidade principal desta rodada.
+- Depois do polimento visual, seguir para ajuste fino mobile e nova validacao de build antes de push/deploy.
