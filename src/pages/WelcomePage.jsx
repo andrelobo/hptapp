@@ -20,18 +20,18 @@ export function WelcomePage() {
         </div>
 
         <div className="space-y-4">
-          <p className="text-sm font-semibold uppercase tracking-[0.28em] text-brand-500">
+          <p className="text-sm font-semibold uppercase tracking-[0.28em] text-brand-100/80">
             Heberton Pinheiro Treinamentos
           </p>
-          <h1 className="text-4xl font-black leading-tight text-brand-900">
+          <h1 className="text-4xl font-black leading-tight text-white">
             Libras no Comercio
           </h1>
-          <p className="text-xl text-brand-700">
+          <p className="text-xl text-brand-100">
             {isCompany
               ? 'Capacitacao e Inclusao para Empresas'
               : 'Comunicacao Sem Barreiras'}
           </p>
-          <p className="max-w-sm text-base leading-7 text-slate-600">
+          <p className="max-w-sm text-base leading-7 text-brand-100/78">
             {isCompany
               ? 'Acompanhe trilhas, talentos e oportunidades para fortalecer a inclusao da sua operacao.'
               : 'Aprenda Libras, conquiste oportunidades e faca a diferenca no mercado com uma experiencia simples e acessivel.'}
@@ -40,7 +40,7 @@ export function WelcomePage() {
 
         <DemoProfileSwitch />
 
-        <div className="overflow-hidden rounded-[2.4rem] border border-white/70 bg-white p-5 shadow-soft">
+        <div className="overflow-hidden rounded-[2.4rem] border border-white/15 bg-white/10 p-5 shadow-soft backdrop-blur">
           <div className="rounded-[2rem] bg-brand-700 p-5 text-white">
             <p className="text-sm text-white/75">{roleMeta.shortLabel}</p>
             <h2 className="mt-1 text-2xl font-black">
@@ -88,7 +88,7 @@ export function WelcomePage() {
         </Link>
         <button
           type="button"
-          className="mx-auto flex items-center gap-2 pt-2 text-sm font-medium text-brand-700"
+          className="mx-auto flex items-center gap-2 pt-2 text-sm font-medium text-brand-100/80"
         >
           <HelpCircle className="h-4 w-4" />
           Precisa de ajuda?

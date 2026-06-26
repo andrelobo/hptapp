@@ -22,7 +22,7 @@ export default {
       },
       backgroundImage: {
         'brand-mesh':
-          'radial-gradient(circle at top left, rgba(29, 94, 255, 0.16), transparent 30%), radial-gradient(circle at bottom right, rgba(242, 181, 68, 0.22), transparent 24%), linear-gradient(180deg, #ffffff, #f5f8ff)'
+          'radial-gradient(circle at top left, rgba(123, 165, 255, 0.22), transparent 24%), radial-gradient(circle at 85% 15%, rgba(242, 181, 68, 0.18), transparent 18%), radial-gradient(circle at bottom right, rgba(29, 94, 255, 0.34), transparent 26%), linear-gradient(160deg, #04142f 0%, #08245f 38%, #0a3184 70%, #0b3e9f 100%)'
       }
     }
   },

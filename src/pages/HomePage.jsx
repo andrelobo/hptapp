@@ -50,10 +50,10 @@ export function HomePage() {
               className="h-14 w-14 rounded-2xl bg-brand-700/95 p-1 shadow-soft"
             />
             <div>
-              <p className="text-sm font-semibold uppercase tracking-[0.28em] text-brand-500">
+              <p className="text-sm font-semibold uppercase tracking-[0.28em] text-brand-100/80">
                 Heberton Pinheiro
               </p>
-              <p className="text-xl font-black text-brand-700">
+              <p className="text-xl font-black text-white">
                 Libras no Comercio
               </p>
             </div>
@@ -63,22 +63,22 @@ export function HomePage() {
 
         <section className="grid flex-1 items-center gap-8 py-10 lg:grid-cols-[1.05fr_0.95fr] lg:py-16">
           <div className="space-y-6">
-            <div className="inline-flex items-center gap-2 rounded-full border border-brand-100 bg-white px-4 py-2 text-sm font-semibold text-brand-700 shadow-soft">
+            <div className="inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/10 px-4 py-2 text-sm font-semibold text-white shadow-soft backdrop-blur">
               <Smartphone className="h-4 w-4" />
               PWA instalavel para celular
             </div>
             <div className="space-y-4">
-              <p className="text-sm font-semibold uppercase tracking-[0.35em] text-brand-500">
+              <p className="text-sm font-semibold uppercase tracking-[0.35em] text-brand-100/80">
                 {isCompany
                   ? 'Capacitacao e conexao com talentos'
                   : 'Comunicacao sem barreiras'}
               </p>
-              <h1 className="max-w-xl text-4xl font-black leading-tight text-brand-900 sm:text-5xl">
+              <h1 className="max-w-xl text-4xl font-black leading-tight text-white sm:text-5xl">
                 {isCompany
                   ? 'Um MVP pronto para apresentar trilhas, talentos e parcerias em inclusao.'
                   : 'Plataforma de capacitacao, certificacao e inclusao para transformar pessoas e empresas.'}
               </h1>
-              <p className="max-w-xl text-lg leading-8 text-slate-600">
+              <p className="max-w-xl text-lg leading-8 text-brand-100/80">
                 {isCompany
                   ? 'Demonstre para empresas parceiras como o app pode apoiar treinamento interno, empregabilidade e relacionamento com a comunidade.'
                   : 'Um MVP visual, claro e pronto para apresentar a instituicoes de ensino e empresas parceiras, com jornada mobile-first focada no aluno.'}
@@ -113,13 +113,13 @@ export function HomePage() {
                 return (
                   <article
                     key={item.title}
-                    className="rounded-[1.8rem] border border-white/70 bg-white/88 p-5 shadow-soft backdrop-blur"
+                    className="rounded-[1.8rem] border border-white/15 bg-white/10 p-5 shadow-soft backdrop-blur"
                   >
-                    <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-2xl bg-brand-50 text-brand-700">
+                    <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-2xl bg-white text-brand-700">
                       <Icon className="h-6 w-6" />
                     </div>
-                    <h2 className="text-lg font-bold text-ink">{item.title}</h2>
-                    <p className="mt-2 text-sm leading-6 text-slate-600">
+                    <h2 className="text-lg font-bold text-white">{item.title}</h2>
+                    <p className="mt-2 text-sm leading-6 text-brand-100/75">
                       {item.description}
                     </p>
                   </article>

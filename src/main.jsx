@@ -7,6 +7,7 @@ import {
   Routes
 } from 'react-router-dom'
 import { registerSW } from 'virtual:pwa-register'
+import { RequireDemoSession } from './components/RequireDemoSession'
 import { routerBasename, routes } from './config/app'
 import { AppShell } from './layouts/AppShell'
 import { CommunityPage } from './pages/CommunityPage'
@@ -32,7 +33,13 @@ ReactDOM.createRoot(document.getElementById('root')).render(
         <Route path={routes.presentation} element={<HomePage />} />
         <Route path={routes.login} element={<LoginPage />} />
 
-        <Route element={<AppShell />}>
+        <Route
+          element={
+            <RequireDemoSession>
+              <AppShell />
+            </RequireDemoSession>
+          }
+        >
           <Route path={routes.dashboard} element={<DashboardPage />} />
           <Route path={routes.courses} element={<CoursesPage />} />
           <Route path={routes.coursePattern} element={<CourseDetailPage />} />

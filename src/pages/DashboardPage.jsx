@@ -83,7 +83,7 @@ export function DashboardPage() {
           action={
             <Link
               to={routes.lesson(featuredCourse.nextLessonId)}
-              className="text-sm font-semibold text-brand-600"
+              className="text-sm font-semibold text-brand-100"
             >
               {isCompany ? 'Abrir demo' : 'Abrir aula'}
             </Link>

@@ -2,7 +2,7 @@ import { useMemo, useState } from 'react'
 import { Link, useLocation, useNavigate } from 'react-router-dom'
 import { routes } from '../config/app'
 import { authProfiles } from '../data/mockData'
-import { readRole, writeRole } from '../hooks/useDemoState'
+import { readRole, startDemoSession } from '../hooks/useDemoState'
 
 function useQueryMode() {
   const location = useLocation()
@@ -11,32 +11,38 @@ function useQueryMode() {
 
 export function LoginPage() {
   const navigate = useNavigate()
+  const location = useLocation()
   const query = useQueryMode()
   const initialMode = query.get('mode') === 'signup' ? 'signup' : 'login'
   const [mode, setMode] = useState(initialMode)
   const [profile, setProfile] = useState(readRole)
+  const destination = location.state?.from
+    ? `${location.state.from.pathname}${location.state.from.search || ''}${
+        location.state.from.hash || ''
+      }`
+    : routes.dashboard
 
   function handleSubmit(event) {
     event.preventDefault()
-    writeRole(profile)
-    navigate(routes.dashboard)
+    startDemoSession(profile)
+    navigate(destination)
   }
 
   return (
     <div className="min-h-screen bg-brand-mesh px-5 py-8">
       <div className="mx-auto max-w-md space-y-6">
-        <Link to={routes.welcome} className="text-sm font-semibold text-brand-700">
+        <Link to={routes.welcome} className="text-sm font-semibold text-brand-100/85">
           ← Voltar
         </Link>
 
         <div className="space-y-3">
-          <p className="text-sm font-semibold uppercase tracking-[0.28em] text-brand-500">
+          <p className="text-sm font-semibold uppercase tracking-[0.28em] text-brand-100/80">
             Acesso ao app
           </p>
-          <h1 className="text-3xl font-black text-brand-900">
+          <h1 className="text-3xl font-black text-white">
             {mode === 'login' ? 'Entrar na plataforma' : 'Criar sua conta'}
           </h1>
-          <p className="text-base leading-7 text-slate-600">
+          <p className="text-base leading-7 text-brand-100/78">
             Fluxo demonstrativo para aluno e empresa. A autenticacao real sera
             conectada depois pelo backend separado.
           </p>

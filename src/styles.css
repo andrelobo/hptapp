@@ -5,8 +5,8 @@
 :root {
   color-scheme: light;
   font-family: "Avenir Next", "Trebuchet MS", "Segoe UI", sans-serif;
-  background: #f5f8ff;
-  color: #172033;
+  background: #061735;
+  color: #f5f8ff;
 }
 
 * {
@@ -21,8 +21,10 @@ body {
   margin: 0;
   min-width: 320px;
   background:
-    radial-gradient(circle at top, rgba(29, 94, 255, 0.12), transparent 30%),
-    linear-gradient(180deg, #ffffff 0%, #f5f8ff 100%);
+    radial-gradient(circle at top left, rgba(123, 165, 255, 0.2), transparent 24%),
+    radial-gradient(circle at right, rgba(242, 181, 68, 0.1), transparent 18%),
+    linear-gradient(160deg, #04142f 0%, #08245f 38%, #0a3184 70%, #0b3e9f 100%);
+  color: #f5f8ff;
 }
 
 body,

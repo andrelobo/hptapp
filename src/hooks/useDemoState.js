@@ -9,8 +9,10 @@ import {
 } from '../data/mockData'
 
 const ROLE_KEY = 'hp-role'
+const SESSION_KEY = 'hp-demo-session'
 const COMPLETED_LESSONS_KEY = 'hp-completed-lessons'
 const ROLE_EVENT = 'hp-demo-role-change'
+const SESSION_EVENT = 'hp-demo-session-change'
 const LESSON_EVENT = 'hp-demo-lessons-change'
 
 function readJson(key, fallback) {
@@ -40,6 +42,32 @@ export function clearRole() {
   window.dispatchEvent(new CustomEvent(ROLE_EVENT, { detail: 'aluno' }))
 }
 
+export function readHasSession() {
+  if (typeof window === 'undefined') {
+    return false
+  }
+
+  return (
+    window.localStorage.getItem(SESSION_KEY) === '1' ||
+    Boolean(window.localStorage.getItem(ROLE_KEY))
+  )
+}
+
+export function writeSessionState(active) {
+  if (active) {
+    window.localStorage.setItem(SESSION_KEY, '1')
+  } else {
+    window.localStorage.removeItem(SESSION_KEY)
+  }
+
+  window.dispatchEvent(new CustomEvent(SESSION_EVENT, { detail: active }))
+}
+
+export function startDemoSession(role) {
+  writeRole(role)
+  writeSessionState(true)
+}
+
 export function readCompletedLessons() {
   if (typeof window === 'undefined') {
     return []
@@ -59,8 +87,35 @@ export function clearCompletedLessons() {
 }
 
 export function resetDemoSession() {
+  writeSessionState(false)
   clearRole()
   clearCompletedLessons()
+}
+
+export function useDemoSession() {
+  const [hasSession, setHasSession] = useState(readHasSession)
+
+  useEffect(() => {
+    function syncSession() {
+      setHasSession(readHasSession())
+    }
+
+    window.addEventListener('storage', syncSession)
+    window.addEventListener(SESSION_EVENT, syncSession)
+    window.addEventListener(ROLE_EVENT, syncSession)
+
+    return () => {
+      window.removeEventListener('storage', syncSession)
+      window.removeEventListener(SESSION_EVENT, syncSession)
+      window.removeEventListener(ROLE_EVENT, syncSession)
+    }
+  }, [])
+
+  return {
+    hasSession,
+    startSession: startDemoSession,
+    clearSession: resetDemoSession
+  }
 }
 
 export function useDemoRole() {

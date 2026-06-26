@@ -9,6 +9,8 @@ O app agora suporta demonstracao rapida em dois perfis:
 
 As telas de entrada, trilhas e certificados tambem foram preparadas para apresentacao comercial do MVP.
 O fluxo mock tambem inclui sair da demonstracao com limpeza do estado local.
+As rotas internas do app agora exigem sessao demo ativa, retornando ao login quando necessario.
+Tambem existe agora uma direcao visual mais forte com fundo azul para testar a percepcao de investidores.
 
 ## Stack
 

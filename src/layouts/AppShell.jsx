@@ -16,28 +16,28 @@ export function AppShell() {
 
   return (
     <div className="mx-auto min-h-screen max-w-md bg-brand-mesh pb-28">
-      <header className="sticky top-0 z-40 border-b border-white/60 bg-white/70 px-5 pb-4 pt-6 backdrop-blur">
+      <header className="sticky top-0 z-40 border-b border-white/10 bg-brand-900/55 px-5 pb-4 pt-6 backdrop-blur-xl">
         <div className="flex items-center justify-between gap-4">
           <div>
-            <p className="text-xs font-semibold uppercase tracking-[0.28em] text-brand-500">
+            <p className="text-xs font-semibold uppercase tracking-[0.28em] text-brand-100/80">
               Heberton Pinheiro
             </p>
-            <h1 className="text-lg font-bold text-brand-700">
+            <h1 className="text-lg font-bold text-white">
               Libras no Comercio
             </h1>
-            <p className="mt-1 text-sm text-slate-500">{roleMeta.shellLabel}</p>
+            <p className="mt-1 text-sm text-brand-100/70">{roleMeta.shellLabel}</p>
           </div>
           <div className="flex items-center gap-2">
             <button
               type="button"
-              className="rounded-full bg-white p-3 text-brand-700 shadow-soft"
+              className="rounded-full border border-white/10 bg-white/10 p-3 text-white shadow-soft"
               aria-label="Buscar"
             >
               <Search className="h-4 w-4" />
             </button>
             <button
               type="button"
-              className="rounded-full bg-white p-3 text-brand-700 shadow-soft"
+              className="rounded-full border border-white/10 bg-white/10 p-3 text-white shadow-soft"
               aria-label="Avisos"
             >
               <Bell className="h-4 w-4" />
@@ -45,7 +45,7 @@ export function AppShell() {
             <button
               type="button"
               onClick={handleLogout}
-              className="inline-flex items-center gap-2 rounded-full bg-white px-4 py-3 text-sm font-semibold text-brand-700 shadow-soft"
+              className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/10 px-4 py-3 text-sm font-semibold text-white shadow-soft"
               aria-label="Sair"
             >
               <LogOut className="h-4 w-4" />

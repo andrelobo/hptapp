@@ -6,6 +6,8 @@
 - Landing inicial, tela de boas-vindas, login mock e rotas principais do aluno já estruturadas.
 - Modo demo com alternância rápida entre perfis `aluno` e `empresa` implementado no frontend.
 - Fluxo mock agora inclui logout e limpeza da sessão demo.
+- Rotas internas agora exigem sessão demo ativa antes de abrir a área autenticada.
+- Tema visual com fundo azul reforçado aplicado para avaliação comercial com investidores.
 - Build de produção validado com `yarn build`.
 - `yarn.lock` gerado e dependências instaladas com Yarn.
 - `vercel.json` adicionado para deploy via GitHub na Vercel.
@@ -30,6 +32,7 @@
 - Rewrites de hospedagem para servir o app em `/app`
 - Dashboard, talentos, comunidade e perfil adaptados para visão de empresa
 - Landing, boas-vindas e certificados refinados para demo comercial mais forte
+- Fundo global, shell e telas de entrada ajustados para uma apresentação mais premium em azul
 
 ## Riscos conhecidos
 
@@ -37,3 +40,4 @@
 - Se o domínio principal já estiver em outro projeto, o subpath `/app` dependerá de roteamento no projeto que controla `hebertonpinheiro.com`.
 - Recursos dependentes do backend continuarão em modo mock até a separação entre os dois repositórios ser conectada.
 - As duas personas ainda compartilham a mesma base de rotas e dados mockados; a separação real dependerá do backend futuro.
+- A proteção atual é apenas de frontend/localStorage, suficiente para demo, mas não substitui autenticação real.
