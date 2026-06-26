@@ -6,7 +6,12 @@
   "redirects": [
     {
       "source": "/",
-      "destination": "/app/",
+      "destination": "/app",
+      "permanent": false
+    },
+    {
+      "source": "/app/",
+      "destination": "/app",
       "permanent": false
     }
   ],
@@ -29,6 +34,10 @@
     },
     {
       "source": "/app",
+      "destination": "/index.html"
+    },
+    {
+      "source": "/app/",
       "destination": "/index.html"
     },
     {
