@@ -1,10 +1,18 @@
-import { Award, BriefcaseBusiness, UserRound } from 'lucide-react'
+import { Award, BriefcaseBusiness, LogOut, UserRound } from 'lucide-react'
+import { useNavigate } from 'react-router-dom'
+import { routes } from '../config/app'
 import { certificates, companyProfile, talentProfile } from '../data/mockData'
-import { useDemoRole } from '../hooks/useDemoState'
+import { resetDemoSession, useDemoRole } from '../hooks/useDemoState'
 
 export function ProfilePage() {
+  const navigate = useNavigate()
   const { role } = useDemoRole()
   const isCompany = role === 'empresa'
+
+  function handleLogout() {
+    resetDemoSession()
+    navigate(routes.welcome)
+  }
 
   return (
     <div className="space-y-6">
@@ -68,6 +76,15 @@ export function ProfilePage() {
             : 'Seu curriculo, competencias e certificados ja estao organizados para futuras conexoes com empresas parceiras.'}
         </p>
       </section>
+
+      <button
+        type="button"
+        onClick={handleLogout}
+        className="flex w-full items-center justify-center gap-3 rounded-full border border-brand-200 bg-white px-5 py-4 text-sm font-semibold text-brand-700 shadow-soft transition hover:-translate-y-0.5"
+      >
+        <LogOut className="h-4 w-4" />
+        Sair da demonstracao
+      </button>
     </div>
   )
 }

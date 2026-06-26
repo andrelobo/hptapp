@@ -1,11 +1,18 @@
-import { Outlet } from 'react-router-dom'
-import { Bell, Search } from 'lucide-react'
+import { Outlet, useNavigate } from 'react-router-dom'
+import { Bell, LogOut, Search } from 'lucide-react'
 import { BottomNav } from '../components/BottomNav'
 import { DemoProfileSwitch } from '../components/DemoProfileSwitch'
-import { useDemoRole } from '../hooks/useDemoState'
+import { routes } from '../config/app'
+import { resetDemoSession, useDemoRole } from '../hooks/useDemoState'
 
 export function AppShell() {
+  const navigate = useNavigate()
   const { roleMeta } = useDemoRole()
+
+  function handleLogout() {
+    resetDemoSession()
+    navigate(routes.welcome)
+  }
 
   return (
     <div className="mx-auto min-h-screen max-w-md bg-brand-mesh pb-28">
@@ -34,6 +41,15 @@ export function AppShell() {
               aria-label="Avisos"
             >
               <Bell className="h-4 w-4" />
+            </button>
+            <button
+              type="button"
+              onClick={handleLogout}
+              className="inline-flex items-center gap-2 rounded-full bg-white px-4 py-3 text-sm font-semibold text-brand-700 shadow-soft"
+              aria-label="Sair"
+            >
+              <LogOut className="h-4 w-4" />
+              <span className="hidden sm:inline">Sair</span>
             </button>
           </div>
         </div>

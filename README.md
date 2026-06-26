@@ -8,6 +8,7 @@ O app agora suporta demonstracao rapida em dois perfis:
 - `empresa`
 
 As telas de entrada, trilhas e certificados tambem foram preparadas para apresentacao comercial do MVP.
+O fluxo mock tambem inclui sair da demonstracao com limpeza do estado local.
 
 ## Stack
 

@@ -35,6 +35,11 @@ export function writeRole(role) {
   window.dispatchEvent(new CustomEvent(ROLE_EVENT, { detail: role }))
 }
 
+export function clearRole() {
+  window.localStorage.removeItem(ROLE_KEY)
+  window.dispatchEvent(new CustomEvent(ROLE_EVENT, { detail: 'aluno' }))
+}
+
 export function readCompletedLessons() {
   if (typeof window === 'undefined') {
     return []
@@ -46,6 +51,16 @@ export function readCompletedLessons() {
 export function writeCompletedLessons(lessons) {
   window.localStorage.setItem(COMPLETED_LESSONS_KEY, JSON.stringify(lessons))
   window.dispatchEvent(new CustomEvent(LESSON_EVENT, { detail: lessons }))
+}
+
+export function clearCompletedLessons() {
+  window.localStorage.removeItem(COMPLETED_LESSONS_KEY)
+  window.dispatchEvent(new CustomEvent(LESSON_EVENT, { detail: [] }))
+}
+
+export function resetDemoSession() {
+  clearRole()
+  clearCompletedLessons()
 }
 
 export function useDemoRole() {

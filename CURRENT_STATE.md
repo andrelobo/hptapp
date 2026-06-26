@@ -5,6 +5,7 @@
 - Frontend PWA base do MVP `Libras no Comércio` implementado neste repositório.
 - Landing inicial, tela de boas-vindas, login mock e rotas principais do aluno já estruturadas.
 - Modo demo com alternância rápida entre perfis `aluno` e `empresa` implementado no frontend.
+- Fluxo mock agora inclui logout e limpeza da sessão demo.
 - Build de produção validado com `yarn build`.
 - `yarn.lock` gerado e dependências instaladas com Yarn.
 - `vercel.json` adicionado para deploy via GitHub na Vercel.
